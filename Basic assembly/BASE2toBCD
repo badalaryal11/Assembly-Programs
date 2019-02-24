@@ -1,0 +1,38 @@
+                             LXI SP,1999
+                             
+                             
+                             LXI H,2020
+                             
+                             
+                             MOV A,M
+                             CALL PWRTEN
+                             
+                             
+                             HLT
+PWRTEN : 
+                             LXI H,2030
+                             
+                             
+                             MVI B,64
+                             
+                             CALL BINBCD
+                             
+                             
+                             MVI B,0A
+                             
+                             CALL BINBCD
+                             
+                             
+                             MOV M,A
+                             RET
+BINBCD : 
+                             MVI M,FF
+                             
+                             NOP
+                             SUB B
+                             JNC 0EEE
+                             
+                             
+                             NOP
+                             INX H
+                             RET
